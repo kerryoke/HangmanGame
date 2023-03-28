@@ -7,13 +7,6 @@ using System.Security.Cryptography.X509Certificates;
 using System.Diagnostics.Contracts;
 using System.ComponentModel;
 
-//ask user for their first letter guess
-//throw an error if what they input is more than one letter or isn't a letter
-//if the letter is included in the word, have it replace the appropriate dashes
-// if it is not included in the word add it to the "incorrect letters" array and display along with the image 
-// loop through asking for user input until they either lose or guess correctly
-
-
 namespace HangmanGame
 {
     class Program
@@ -47,7 +40,7 @@ namespace HangmanGame
                 Console.WriteLine("\n\nGuess a letter:");
                 guess = Console.ReadLine().ToLower();
 
-                if (guess == "exit")
+                if (guess.Equals("exit", StringComparison.OrdinalIgnoreCase))
                 {
                     break;
                 }
@@ -56,14 +49,19 @@ namespace HangmanGame
                 if (guessLength != 1)
                 {
                     Console.WriteLine("Please guess one letter.");
+                    Console.WriteLine("\n\nGuess a letter:");
+                    guess = Console.ReadLine().ToLower();
                 }
 
                 //check to see if the guess is actually a letter and if not, give an error message
+                //and ask for another guess
                 char guessAsChar = char.Parse(guess);
                 bool isLetter = char.IsLetter(guessAsChar);
                 if (!isLetter)
                 {
                     Console.WriteLine("Guess must be a letter.");
+                    Console.WriteLine("\n\nGuess a letter:");
+                    guess = Console.ReadLine().ToLower();
                 }
 
                 if (correctCharacters.Contains(guessAsChar))
@@ -80,6 +78,7 @@ namespace HangmanGame
 
                 }
 
+                //display _ or letter depending on correct guesses
                 string wordInProgress = string.Empty;
                 for (int i = 0; i < correctCharacters.Count; i++)
                 {
@@ -128,21 +127,6 @@ namespace HangmanGame
 
         }
 
-        //while method a or/and method b, go through the loop and based on that prompt user for another guess
-
-        //check if they've gotten all letters correct (all true - in method) 
-        //public bool CheckIfAllCorrect()
-        //{
-
-        //}
-
-        ////check if they've run out of guesses
-        //public bool StillHaveGuessesLeft()
-        //{
-
-        //}
-
-        //check if the input is "exit"
         
     }
 }
