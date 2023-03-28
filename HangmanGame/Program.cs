@@ -19,9 +19,6 @@ namespace HangmanGame
 
             string hangmanWord = Words.GetRandomWord();
 
-            //included for testing - REMOVE LATER
-            Console.WriteLine(hangmanWord);
-
             List <char> correctCharacters = new List<char>();
             correctCharacters.AddRange(hangmanWord);
 
