@@ -20,7 +20,7 @@ namespace HangmanGame
                  "shovel",
                  "buffalo",
                  "zombie",
-                 "abuptly",
+                 "abruptly",
                  "bayou",
                  "jackpot",
                  "cobweb",

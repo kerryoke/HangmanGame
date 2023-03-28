@@ -30,9 +30,9 @@ namespace HangmanGame
             }
             
             string guess = null;
-            List<char> guessedIncorrectlyList = new List<char>();  
+            List<char> incorrectGuesses = new List<char>();  
             List<char> correctGuesses = new List<char>();
-            while (guess != "exit" && guessedIncorrectlyList.Count < 7)
+            while (guess != "exit" && incorrectGuesses.Count < 7)
             {
                 Console.WriteLine("\n\nGuess a letter:");
                 guess = Console.ReadLine().ToLower();
@@ -65,15 +65,15 @@ namespace HangmanGame
                         }
                         else
                         {
-                            guessedIncorrectlyList.Add(guessAsChar);
+                            incorrectGuesses.Add(guessAsChar);
                         }
                         Console.WriteLine("Letters you have already guessed:");
-                        Console.WriteLine(string.Join(", ", guessedIncorrectlyList));
+                        Console.WriteLine(string.Join(", ", incorrectGuesses));
 
                         //display _ or letter depending on correct guesses
                         string wordInProgress = Utility.DetermineWordInProgress(correctCharacters, correctGuesses);
 
-                        Display.DisplayHangmanImage(guessedIncorrectlyList);
+                        Display.DisplayHangmanImage(incorrectGuesses);
 
                         string wordInProgressNoSpaces = wordInProgress.Replace(" ", "");
                         if (wordInProgressNoSpaces == hangmanWord)
