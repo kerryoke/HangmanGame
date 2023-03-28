@@ -9,3 +9,4 @@ The following features have been included in this project:
 2. Create a dictionary or list, populate it with several values, retrieve at least one value, and use it in your program
 3. Calculate and display data based on an external factor (ex: get the current date, and display how many days remaining until some event (counts incorrect guesses and displays corresponding image)
 4. Read data from an external file, such as text, JSON, CSV, etc and use that data in your application
+5. Analyze text and display information about it (determines how many letters in the random word; compares strings to determine if the correct answer has been reached)
