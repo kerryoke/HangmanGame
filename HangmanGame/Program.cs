@@ -49,78 +49,43 @@ namespace HangmanGame
                 if (guessLength != 1)
                 {
                     Console.WriteLine("Please guess one letter.");
-                    Console.WriteLine("\n\nGuess a letter:");
-                    guess = Console.ReadLine().ToLower();
-                }
-
-                //check to see if the guess is actually a letter and if not, give an error message
-                //and ask for another guess
-                char guessAsChar = char.Parse(guess);
-                bool isLetter = char.IsLetter(guessAsChar);
-                if (!isLetter)
-                {
-                    Console.WriteLine("Guess must be a letter.");
-                    Console.WriteLine("\n\nGuess a letter:");
-                    guess = Console.ReadLine().ToLower();
-                }
-
-                if (correctCharacters.Contains(guessAsChar))
-                {
-                    correctGuesses.Add(guessAsChar);
-                    Console.WriteLine("Letters you have already guessed:");
-                    Console.WriteLine(string.Join(", ", guessedIncorrectlyList));
                 }
                 else
                 {
-                    guessedIncorrectlyList.Add(guessAsChar);
-                    Console.WriteLine("Letters you have already guessed:");
-                    Console.WriteLine(string.Join(", ", guessedIncorrectlyList));
-
-                }
-
-                //display _ or letter depending on correct guesses
-                string wordInProgress = string.Empty;
-                for (int i = 0; i < correctCharacters.Count; i++)
-                {
-                    if (correctGuesses.Contains(correctCharacters[i]))
+                    //check to see if the guess is actually a letter and if not, give an error message
+                    //and ask for another guess
+                    char guessAsChar = char.Parse(guess);
+                    bool isLetter = char.IsLetter(guessAsChar);
+                    if (!isLetter)
                     {
-                        wordInProgress += $"{correctCharacters[i]} ";
+                        Console.WriteLine("Guess must be a letter.");
                     }
                     else
                     {
-                        wordInProgress += "_ ";
+                        if (correctCharacters.Contains(guessAsChar))
+                        {
+                            correctGuesses.Add(guessAsChar);
+                        }
+                        else
+                        {
+                            guessedIncorrectlyList.Add(guessAsChar);
+                        }
+                        Console.WriteLine("Letters you have already guessed:");
+                        Console.WriteLine(string.Join(", ", guessedIncorrectlyList));
+
+                        //display _ or letter depending on correct guesses
+                        string wordInProgress = Utility.DetermineWordInProgress(correctCharacters, correctGuesses);
+
+                        Display.DisplayHangmanImage(guessedIncorrectlyList);
+
+                        string wordInProgressNoSpaces = wordInProgress.Replace(" ", "");
+                        if (wordInProgressNoSpaces == hangmanWord)
+                        {
+                            Console.WriteLine("Congratulations, you won!");
+                            break;
+                        }
                     }
                 }
-                Console.WriteLine(wordInProgress);
-                
-
-                switch (guessedIncorrectlyList.Count)
-                {
-                    case 1:
-                        Display.FirstWrongAnswer() ; break;
-                    case 2:
-                        Display.SecondWrongAnswer() ; break;
-                    case 3:
-                        Display.ThirdWrongAnswer(); break;
-                    case 4:
-                        Display.FourthWrongAnswer(); break;
-                    case 5:
-                        Display.FifthWrongAnswer(); break;
-                    case 6:
-                        Display.SixthWrongAnswer() ; break;
-                    case 7:
-                        Display.SeventhWrongAnswer() ;
-                        Console.WriteLine("Sorry, you're out of guesses! Better luck next time."); break;
-
-                }
-
-                string wordInProgressNoSpaces = wordInProgress.Replace(" ", "");
-                if (wordInProgressNoSpaces == hangmanWord)
-                {
-                    Console.WriteLine("Congratulations, you won!");
-                    break;
-                }
-
                 
             }
 

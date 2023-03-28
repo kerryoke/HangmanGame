@@ -8,6 +8,29 @@ namespace HangmanGame
 {
     public static class Display
     {
+        public static void DisplayHangmanImage(List<char> guessedIncorrectlyList)
+        {
+            switch (guessedIncorrectlyList.Count)
+            {
+                case 1:
+                    Display.FirstWrongAnswer(); break;
+                case 2:
+                    Display.SecondWrongAnswer(); break;
+                case 3:
+                    Display.ThirdWrongAnswer(); break;
+                case 4:
+                    Display.FourthWrongAnswer(); break;
+                case 5:
+                    Display.FifthWrongAnswer(); break;
+                case 6:
+                    Display.SixthWrongAnswer(); break;
+                case 7:
+                    Display.SeventhWrongAnswer();
+                    Console.WriteLine("Sorry, you're out of guesses! Better luck next time."); break;
+
+            }
+        }
+        
         public static void FirstWrongAnswer()
         {
             Console.WriteLine(" " + " " + "_______");
@@ -71,6 +94,7 @@ namespace HangmanGame
             Console.WriteLine(" " + "|" + " " + " " + " " + " " + " " + " " + " " + "|");
             Console.WriteLine("/" + " " + "\\" + " " + " " + " " + " " + " " + " " + "|");
         }
+
 
         
         
