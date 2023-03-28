@@ -49,8 +49,7 @@ namespace HangmanGame
                 }
                 else
                 {
-                    //check to see if the guess is actually a letter and if not, give an error message
-                    //and ask for another guess
+                    //check to see if the guess is a letter
                     char guessAsChar = char.Parse(guess);
                     bool isLetter = char.IsLetter(guessAsChar);
                     if (!isLetter)
@@ -71,7 +70,7 @@ namespace HangmanGame
                         Console.WriteLine(string.Join(", ", incorrectGuesses));
 
                         //display _ or letter depending on correct guesses
-                        string wordInProgress = Utility.DetermineWordInProgress(correctCharacters, correctGuesses);
+                        string wordInProgress = DisplayWordInProgress.DetermineWordInProgress(correctCharacters, correctGuesses);
 
                         Display.DisplayHangmanImage(incorrectGuesses);
 

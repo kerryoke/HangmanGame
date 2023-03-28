@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HangmanGame
 {
-    public static class Utility
+    public static class DisplayWordInProgress
     {
         public static string DetermineWordInProgress(List<char> correctCharacters, List<char> correctGuesses)
         {
