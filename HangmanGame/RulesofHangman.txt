@@ -1,0 +1,8 @@
+﻿HOW TO PLAY: 
+A word has been randomly selected and it's your job to figure out what it is!
+The number of "_" tells you how many letters are in the word.
+Guess letters one at a time to reveal the secret word.
+If you guess correctly, the letter will be shown in the position where it occurs in the word.
+For each incorrect guess, an additional part of the hangman is drawn.
+If you guess incorrectly 7 times, you will have completed the hangman and you lose the game.
+Let's get started!
