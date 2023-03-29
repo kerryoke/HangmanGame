@@ -78,6 +78,7 @@ namespace HangmanGame
                         if (wordInProgressNoSpaces == hangmanWord)
                         {
                             Console.WriteLine("Congratulations, you won!");
+                            Console.ReadKey();
                             break;
                         }
                     }
